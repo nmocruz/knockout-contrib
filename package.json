@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/babel-core": "^6.25.3",
     "@types/benchmark": "^1.0.31",
+    "@types/chalk": "^2.2.0",
     "@types/chokidar": "^1.7.5",
     "@types/fs-extra": "^5.0.1",
     "@types/globby": "^8.0.0",
@@ -82,5 +83,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
   }
 }
