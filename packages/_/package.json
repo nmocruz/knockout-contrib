@@ -63,5 +63,8 @@
     "@profiscience/knockout-contrib-utils-modify": "^2.0.0-rc.1",
     "@profiscience/knockout-contrib-utils-once": "^2.0.0-rc.1",
     "@profiscience/knockout-contrib-utils-toggle": "^2.0.0-rc.1"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

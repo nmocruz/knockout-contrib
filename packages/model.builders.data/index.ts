@@ -45,7 +45,7 @@ const INSTANCES = new Map<symbol, DataModelConstructorBuilder<any>>()
 export class DataModelConstructorBuilder<P> extends ConstructorBuilder.Mixin(
   SubscriptionDisposalMixin
 ).Mixin(DisposalAggregatorMixin) {
-  protected readonly INSTANCE_ID = Symbol('DATA_MODEL_INSTANCE');
+  //protected readonly INSTANCE_ID = Symbol('DATA_MODEL_INSTANCE');
 
   public [INITIALIZED]: Promise<void>
 
@@ -54,18 +54,21 @@ export class DataModelConstructorBuilder<P> extends ConstructorBuilder.Mixin(
    */
   public loading: ko.Observable<boolean> = ko.observable()
 
+  public update: () => Promise<void>
   /**
    * Constructs a new DataModel instance
    *
    * @param params Parameters for the current model state. If observable, will trigger
    *  updates to observable properties when modified
    */
-  constructor(protected params: P, initData?: { [k: string]: any }) {
+  constructor(params: P, initData?: { [k: string]: any }) {
     super()
 
-    nonenumerable(this, 'INSTANCE_ID')
+    // nonenumerable(this, 'INSTANCE_ID')
     nonenumerable(this, 'params')
     nonenumerable(this, 'loading')
+
+    let INSTANCE_ID = Symbol('DATA_MODEL_INSTANCE')
 
     if (!initData) {
       this.loading(true)
@@ -76,14 +79,42 @@ export class DataModelConstructorBuilder<P> extends ConstructorBuilder.Mixin(
        *  b) casting a property as another class with the TransformMixin
        * In either case, it is inappropriate for the model refresh itself.
        */
-      INSTANCES.set(this.INSTANCE_ID, this)
+      INSTANCES.set(INSTANCE_ID, this)
     }
 
-    this[INITIALIZED] = this.fetch(initData).then((res) => {
+    /**
+     * Abstract method that defines how data is retrieved, typically AJAX.
+     *
+     * Should use `this.params`, if applicable.
+     *
+     * @abstract
+     */
+    let fetch = async (initData?: any) => {
+      if (initData) {
+        return initData
+      } else {
+        throw new Error(
+          'fetch is not implemented in derived class and no initial data supplied'
+        )
+      }
+    }
+
+    this.update = async () => {
+      this.loading(true)
+      assign(this, await fetch(), { strict: true })
+      this.loading(false)
+    }
+
+    this[INITIALIZED] = fetch(initData).then((res) => {
       assign(this, res, { strict: true })
       this.loading(false)
-      this.subscribe(this.params, () => this.update())
+      this.subscribe(params, () => this.update())
     })
+
+    this.dispose = () => {
+      INSTANCES.delete(INSTANCE_ID)
+      super.dispose()
+    }
   }
 
   /**
@@ -104,34 +135,6 @@ export class DataModelConstructorBuilder<P> extends ConstructorBuilder.Mixin(
   public async delete(): Promise<void> {
     this.dispose()
     await DataModelConstructorBuilder.updateAll()
-  }
-
-  protected async update(): Promise<void> {
-    this.loading(true)
-    assign(this, await this.fetch(), { strict: true })
-    this.loading(false)
-  }
-
-  /**
-   * Abstract method that defines how data is retrieved, typically AJAX.
-   *
-   * Should use `this.params`, if applicable.
-   *
-   * @abstract
-   */
-  protected async fetch(initData?: any): Promise<any> {
-    if (initData) {
-      return initData
-    } else {
-      throw new Error(
-        'fetch is not implemented in derived class and no initial data supplied'
-      )
-    }
-  }
-
-  public dispose(): void {
-    INSTANCES.delete(this.INSTANCE_ID)
-    super.dispose()
   }
 
   /**

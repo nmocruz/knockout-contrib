@@ -3,18 +3,5 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "commands": {
-    "publish": {
-      "ignoreChanges": [
-        "**/docs/**",
-        "**/examples/**",
-        "**/__tests__/**",
-        "**/*.test.ts",
-        "**/*.test.tsx",
-        "**/test.ts",
-        "**/test.tsx",
-        "**/*.md"
-      ]
-    }
-  }
+  "packages": ["packages/*"]
 }

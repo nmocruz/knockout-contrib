@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "importHelpers": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "jsxFactory": "h",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "lib": ["dom", "es5", "es2015", "esnext.asynciterable"]
+  },
+  "exclude": [
+    "dist",
+    "**/dist",
+    "**/examples",
+    "**/**/examples",
+    "templates",
+    "**/__tests__"
+  ]
+}

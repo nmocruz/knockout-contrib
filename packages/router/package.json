@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "karma start"
+    "prepare": "tsc -p tsconfig.build.json"
   },
   "main": "dist/node/index.js",
   "module": "dist/default/index.js",

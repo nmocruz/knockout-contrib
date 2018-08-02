@@ -26,5 +26,8 @@
     "@profiscience/knockout-contrib-jest-matchers": "^2.0.0-rc.1",
     "@profiscience/knockout-contrib-router": "^2.0.0-rc.3",
     "@profiscience/knockout-contrib-router-plugins-component": ">=1.0.0-rc.0"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

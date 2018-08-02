@@ -20,5 +20,8 @@
   "dependencies": {
     "@profiscience/knockout-contrib-model-builders-base": "^2.0.0-rc.2",
     "tslib": "^1.8.0"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

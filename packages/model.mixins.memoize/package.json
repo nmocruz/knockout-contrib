@@ -15,10 +15,13 @@
   "types": "index.ts",
   "sideEffects": false,
   "peerDependencies": {
-    "@profiscience/knockout-contrib-model-builders-data": ">=2.0.0-rc.0",
+    "@profiscience/knockout-contrib-model-builders-data": "^2.0.0-rc.0",
     "knockout": "3.5.0-rc"
   },
   "devDependencies": {
     "@profiscience/knockout-contrib-model-builders-data": "^2.0.0-rc.2"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

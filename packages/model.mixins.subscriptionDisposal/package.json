@@ -18,7 +18,12 @@
     "knockout": "3.5.0-rc"
   },
   "dependencies": {
-    "@profiscience/knockout-contrib-model-builders-base": "^2.0.0-rc.2",
+    "@profiscience/knockout-contrib-model-builders-base": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
     "tslib": "^1.8.0"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

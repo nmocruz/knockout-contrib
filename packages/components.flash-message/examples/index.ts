@@ -5,4 +5,4 @@ import { flashMessage } from '@profiscience/knockout-contrib-router-middleware-f
 
 flashMessage('This is a flash message!')
 
-ko.applyBindings()
+ko.applyBindings(document.getElementsByName('container')[0])

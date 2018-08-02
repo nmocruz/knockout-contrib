@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@profiscience/knockout-contrib-jest-matchers": "^2.0.0-rc.1"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

@@ -26,5 +26,8 @@
   "devDependencies": {
     "@profiscience/knockout-contrib-model-builders-data": "^2.0.0-rc.2",
     "@profiscience/knockout-contrib-query": "^2.0.0-rc.3"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

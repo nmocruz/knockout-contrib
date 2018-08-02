@@ -15,14 +15,17 @@
   "types": "index.tsx",
   "sideEffects": false,
   "peerDependencies": {
-    "@profiscience/knockout-contrib-router-middleware-flash-message": ">=2.0.0-rc.0",
     "knockout": "^3.5.0-rc"
   },
   "dependencies": {
+    "@profiscience/knockout-contrib-router-middleware-flash-message": "^2.0.0-rc.0",
     "@profiscience/knockout-contrib-model-builders-view": "^2.0.0-rc.2",
     "jsx-dom": "^6.0.0"
   },
   "devDependencies": {
     "@profiscience/knockout-contrib-router-middleware-flash-message": "^2.0.0-rc.2"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

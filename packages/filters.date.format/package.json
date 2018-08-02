@@ -20,5 +20,8 @@
   },
   "dependencies": {
     "date-fns": "^2.0.0-alpha.8"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

@@ -16,5 +16,8 @@
   "sideEffects": false,
   "peerDependencies": {
     "knockout": "3.5.0-rc"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

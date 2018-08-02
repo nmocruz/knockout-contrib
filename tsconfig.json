@@ -1,18 +1,9 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "es2017",
-    "importHelpers": true,
-    "sourceMap": true,
-    "jsx": "react",
-    "resolveJsonModule": true,
-    "jsxFactory": "h",
-    "strict": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
-    "declaration": true,
-    "lib": ["dom", "es5", "es2015", "esnext.asynciterable"]
-  },
-  "include": ["**/*"],
-  "exclude": ["**/dist", "**/examples", "**/**/examples", "templates"]
+    "baseUrl": "./packages",
+    "paths": {
+      "@profiscience/*": ["./*/src"]
+    }
+  }
 }

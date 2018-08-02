@@ -23,5 +23,8 @@
   },
   "devDependencies": {
     "@profiscience/knockout-contrib-router": "^2.0.0-rc.3"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json"
   }
 }

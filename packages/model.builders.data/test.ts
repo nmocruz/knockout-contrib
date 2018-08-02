@@ -134,6 +134,12 @@ describe('model.builders.data', () => {
 
     class FooModel extends DataModelConstructorBuilder<IFooParams> {
       public readonly value = ko.observable()
+      /**
+       *
+       */
+      constructor(private params: IFooParams) {
+        super(params)
+      }
 
       protected async fetch() {
         return { value: this.params.valueIn() }
